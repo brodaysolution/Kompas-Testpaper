@@ -190,7 +190,7 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 
 <script>
 // ===== KONFIGURASI =====
-const SHEET_URL='https://script.google.com/macros/s/AKfycbxKhYcpZis2fZUNguQXEYYwdZm7O-cDjJviy3qiPTxpT7TuhGIG4EJeddoTibTjVWPQ7Q/exec';
+const SHEET_URL=''; // TODO: tampal URL Web App dari Apps Script Sheet tempahan
 const LOKASI='Booth Testpaper'; // TODO: tukar kepada nama event & lokasi sebenar
 // TODO: tukar tarikh event sebenar (YYYY-MM-DD)
 const DAYS=['2026-11-28','2026-11-29'];
@@ -223,7 +223,7 @@ $('#f').onsubmit=async e=>{e.preventDefault();
  f.append('event_id',EID);f.append('fbp',ck('_fbp'));f.append('fbc',ck('_fbc')||(utm.get('fbclid')?'fb.1.'+Date.now()+'.'+utm.get('fbclid'):''));f.append('ua',navigator.userAgent);f.append('url',location.href);f.append('pakej','Temu Janji: '+f.get('servis'));f.append('value',0);
  ['utm_source','utm_medium','utm_campaign','fbclid'].forEach(k=>f.append(k,utm.get(k)||''));
  const btn=e.target.querySelector('.red');btn.disabled=true;btn.textContent='Menghantar...';
- try{await fetch(SHEET_URL,{method:'POST',body:new URLSearchParams(f),mode:'no-cors'})}catch(_){}
+ try{if(SHEET_URL)await fetch(SHEET_URL,{method:'POST',body:new URLSearchParams(f),mode:'no-cors'})}catch(_){}
  fbq('track','Schedule',{content_name:f.get('servis')},{eventID:EID});
  const d=f.get('tarikh'),t=f.get('masa'),esc=s=>String(s).replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
  $('#tk').innerHTML=`<p>👤 <b>${esc(f.get('nama'))}</b> &amp; ${esc(f.get('anak'))} (${esc(f.get('tahap'))})</p><p>🎯 ${esc(f.get('servis'))}</p><p>📅 ${fmt(d)} · ⏰ ${t}</p><p>📍 ${esc(LOKASI)}</p>`;

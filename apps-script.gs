@@ -54,6 +54,7 @@ function handleTemuJanji(e) {
       p.catatan || "", p.lokasi || "", p.utm_source || "", p.utm_medium || "", p.utm_campaign || "",
       p.fbclid || "", p.agent || "", full ? "SLOT PENUH - hubungi" : "Belum disahkan",
     ]);
+    try { notifyTelegram(p, full); } catch (err) { console.error("Telegram gagal: " + err); }
     return response({ ok: true, full: full });
   } catch (error) {
     return response({ ok: false, error: error.message });
@@ -97,4 +98,40 @@ function testTempahan() {
     tarikh: "2026-11-28", masa: "09:00", lokasi: "Booth Testpaper Lot No 4",
   }});
   Logger.log(r.getContent());
+}
+
+// ===== Notifikasi Telegram =====
+// Simpan di Project Settings > Script Properties:
+//   TG_TOKEN = token bot dari @BotFather
+//   TG_CHAT  = chat id (orang/group yang terima noti)
+function notifyTelegram(p, full) {
+  const props = PropertiesService.getScriptProperties();
+  const token = props.getProperty("TG_TOKEN"), chat = props.getProperty("TG_CHAT");
+  if (!token || !chat) return;
+  const wa = String(p.wa || "").replace(/\D/g, "").replace(/^0/, "60");
+  const text = [
+    full ? "⚠️ <b>TEMPAHAN BARU (SLOT PENUH)</b>" : "🔔 <b>TEMPAHAN BARU</b>",
+    "",
+    "👤 " + esc(p.nama) + " (" + esc(p.anak) + ", " + esc(p.tahap) + ")",
+    "📱 <a href=\"https://wa.me/" + wa + "\">" + esc(p.wa) + "</a>",
+    "✉️ " + esc(p.emel),
+    "🎯 " + esc(p.servis),
+    "📅 " + esc(p.tarikh) + " ⏰ " + esc(p.masa),
+    p.sasaran ? "🏫 " + esc(p.sasaran) : "",
+    p.catatan ? "📝 " + esc(p.catatan) : "",
+  ].filter(String).join("\n");
+  UrlFetchApp.fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+    method: "post", contentType: "application/json", muteHttpExceptions: true,
+    payload: JSON.stringify({ chat_id: chat, text: text, parse_mode: "HTML", disable_web_page_preview: true }),
+  });
+}
+
+function esc(v) {
+  return String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// Uji noti: pilih testTelegram > Run
+function testTelegram() {
+  notifyTelegram({ nama: "TEST", anak: "Anak Test", tahap: "Tahun 6", wa: "0123456789", emel: "test@test.com",
+    servis: "Saringan RIASEC", tarikh: "2026-11-28", masa: "09:00" }, false);
 }

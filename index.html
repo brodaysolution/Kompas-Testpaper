@@ -31,6 +31,10 @@ h1 span{color:var(--y)}
 .sub mark{background:var(--y);color:var(--red2);font-weight:700;padding:0 8px;border-radius:6px}
 .mascot{width:100%;max-width:400px;justify-self:center;filter:drop-shadow(0 20px 30px rgba(0,0,0,.35));animation:bob 3s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-12px)}}
+.evt{background:rgba(0,0,0,.18);border-left:4px solid var(--y);border-radius:12px;padding:10px 14px;margin:0 0 16px;font-size:15px;max-width:520px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gal div{aspect-ratio:4/3;border-radius:18px;background:linear-gradient(135deg,#dcfce7,#bbf7d0);border:2px dashed var(--g3);display:grid;place-items:center;text-align:center;color:var(--g1);font-weight:600;font-size:14px}.gal div span{font-size:40px;display:block}
+.map{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;background:#fff;border-radius:24px;padding:24px;border:2px solid #dcfce7}
+@media(max-width:760px){.evt{margin:0 auto 16px;text-align:left}.map{grid-template-columns:1fr}.gal{grid-template-columns:1fr 1fr}}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.chips span{background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.35);border-radius:99px;padding:6px 14px;font-size:14px;font-weight:600}
 section{padding:64px 0}
 h2{font-size:clamp(26px,4vw,38px);text-align:center;margin:0 0 .3em;color:var(--g1);line-height:1.15}
@@ -95,9 +99,10 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 <div class="nav"><div class="w"><a class="shoplink" href="https://shop.testpaper.com.my/?code=DIGI002" target="_blank"><img src="img/logo.png" alt="Testpaper.com.my"></a><a class="btn" href="#tempah">Tempah Slot</a></div></div>
 
 <header><div class="w"><div class="txt">
-<span class="tag">🎓 KHIDMAT PERCUMA DI BOOTH TESTPAPER</span>
+<span class="tag">🎪 KARNIVAL MBTHO BERIADAH 4.0 · 28 &amp; 29 NOV</span>
 <h1><small>Masih keliru tentang…</small>Pilihan Sekolah &amp; <span>Hala Tuju Masa Depan Anak?</span></h1>
 <p class="sub">Jom dapatkan khidmat nasihat &amp; panduan pendidikan secara <mark>PERCUMA</mark> — kenali pilihan sekolah, minat &amp; potensi sebenar anak anda.</p>
+<div class="evt">📍 <b>Booth Testpaper, Lot No 4</b> — Masjid Bandar Tun Hussein Onn, Cheras<br>🕘 9:00–11:00 pagi &nbsp;·&nbsp; 🕝 2:30–4:30 petang</div>
 <div class="chips"><span>🏫 MRSM</span><span>🏛️ SBP</span><span>⭐ Sekolah Khusus</span><span>🧭 RIASEC</span></div>
 <a class="btn" href="#tempah">📅 Tempah Slot Temu Janji PERCUMA →</a>
 </div><img class="mascot" src="img/mascot.webp" alt="Maskot Testpaper"></div></header>
@@ -148,7 +153,7 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
   <input name="nama" placeholder="Nama ibu/bapa" required autocomplete="name">
   <div class="row" style="margin-top:10px"><input name="wa" type="tel" placeholder="No. WhatsApp (cth 0123456789)" required pattern="[0-9+\- ]{9,15}" autocomplete="tel"><input name="emel" type="email" placeholder="Emel" required autocomplete="email"></div>
   <label class="t">Maklumat Anak</label>
-  <div class="row"><input name="anak" placeholder="Nama anak" required><select name="tahap" required><option value="">Tahap persekolahan</option><option>Tahun 4</option><option>Tahun 5</option><option>Tahun 6</option><option>Tingkatan 1</option><option>Tingkatan 2</option><option>Tingkatan 3</option><option>Tingkatan 4</option><option>Tingkatan 5</option></select></div>
+  <div class="row"><input name="anak" placeholder="Nama anak" required><select name="tahap" required><option value="">Tahap persekolahan</option><option>Prasekolah (4 tahun)</option><option>Prasekolah (5 tahun)</option><option>Prasekolah (6 tahun)</option><option>Tahun 1</option><option>Tahun 2</option><option>Tahun 3</option><option>Tahun 4</option><option>Tahun 5</option><option>Tahun 6</option><option>Tingkatan 1</option><option>Tingkatan 2</option><option>Tingkatan 3</option><option>Tingkatan 4</option><option>Tingkatan 5</option></select></div>
   <div class="row" style="margin-top:10px"><select name="pax"><option value="1">Bilangan anak: 1</option><option value="2">2 orang anak</option><option value="3">3 orang anak</option><option value="4+">4 atau lebih</option></select><input name="sasaran" placeholder="Sekolah sasaran (jika ada)"></div>
   <label class="t">Ada soalan / perkara nak dibincang? <small style="font-weight:400">(pilihan)</small></label>
   <textarea name="catatan" rows="3" placeholder="Cth: Anak minat sains, nak tahu peluang MRSM Premier…"></textarea>
@@ -164,10 +169,10 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 </div></div></section>
 
 <section class="gift"><div class="w">
-<h2>🎁 Hadiah Istimewa Untuk <span>Pengunjung!</span></h2><p class="lead">Datang ke booth, dapatkan khidmat nasihat — dan bawa pulang ole-ole!</p>
+<h2>🎁 Hadiah Istimewa Untuk <span>Pengunjung!</span></h2><p class="lead">Syaratnya mudah: <b>tempah slot temu janji secara PERCUMA</b> &amp; datang ke booth. Itu sahaja!</p>
 <div class="gg">
  <div class="gc"><div class="rib">PERCUMA</div><div class="e">🍦</div><div class="big">250</div><h3>Aiskrim Malaysia</h3><p>Sejuk-sejuk untuk anak-anak!</p></div>
- <div class="gc"><div class="rib">PERCUMA</div><div class="e">☕</div><div class="big">Vanilla</div><h3>Hot Latte</h3><p>Dari mesin kopi — untuk Ibu Ayah.</p></div>
+ <div class="gc"><div class="rib">PERCUMA</div><div class="e">☕</div><div class="big">Hot</div><h3>Caffè Latte</h3><p>Panas-panas untuk Ibu Ayah.</p></div>
  <div class="gc"><div class="rib">EKSKLUSIF</div><div class="e">🥤</div><div class="big">20</div><h3>Tumbler Testpaper</h3><p>Khas untuk 20 pengunjung terawal!</p></div>
 </div></div></section>
 
@@ -178,9 +183,17 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 
 <section style="padding-top:0"><div class="w" style="max-width:720px"><h2>Soalan Lazim</h2>
 <details><summary>Adakah sesi ini benar-benar percuma?</summary><p>Ya, khidmat nasihat dan Saringan RIASEC di booth adalah percuma sepenuhnya.</p></details>
-<details><summary>Berapa lama setiap sesi?</summary><p>Lebih kurang 20–30 minit. Jika pilih kedua-dua khidmat, peruntukkan masa lebih sedikit.</p></details>
+<details><summary>Berapa lama setiap sesi?</summary><p>Setiap slot 15 minit bersama perunding. Kami ada 5 perunding setiap sesi, jadi anda tak perlu menunggu lama.</p></details>
+<details><summary>Bila &amp; di mana?</summary><p>28 &amp; 29 November 2026, sesi pagi 9:00–11:00 dan petang 2:30–4:30, di Booth Testpaper Lot No 4, Karnival MBTHO Beriadah 4.0, Masjid Bandar Tun Hussein Onn, 43000 Cheras, Selangor.</p></details>
+<details><summary>Bagaimana nak dapat hadiah?</summary><p>Hanya perlu tempah slot temu janji secara percuma &amp; hadir ke booth. Tumbler untuk 20 pengunjung terawal sahaja.</p></details>
 <details><summary>Perlu bawa anak?</summary><p>Digalakkan, terutamanya untuk Saringan RIASEC yang perlu dijawab oleh anak sendiri.</p></details>
 <details><summary>Kalau terlepas slot?</summary><p>WhatsApp kami — kami cuba susun semula ke slot lain yang masih kosong.</p></details>
+</div></section>
+
+<section style="padding-top:0"><div class="w">
+<h2>📍 Lokasi <span>Booth</span></h2><p class="lead">Karnival MBTHO Beriadah 4.0</p>
+<div class="map"><div><h3 style="margin:0;color:var(--g1);font-size:24px">Booth Testpaper · Lot No 4</h3><p>Masjid Bandar Tun Hussein Onn,<br>43000 Cheras, Selangor</p><p>📅 <b>28 &amp; 29 November 2026</b><br>🕘 9:00 – 11:00 pagi<br>🕝 2:30 – 4:30 petang</p><a class="btn" href="https://maps.app.goo.gl/QywW4PZbrnGN1qev7" target="_blank">🗺️ Buka Google Maps</a></div>
+<div class="gal" style="grid-template-columns:1fr 1fr"><div><p><span>📸</span>Gambar booth</p></div><div><p><span>👨‍👩‍👧</span>Sesi nasihat</p></div><div><p><span>🧭</span>Saringan RIASEC</p></div><div><p><span>🎁</span>Hadiah pengunjung</p></div></div></div>
 </div></section>
 
 <div class="cta"><div class="w"><h2>📍 Jumpa Kami Di Booth Testpaper!</h2><p style="margin:0 0 18px">Bawa anak-anak bersama, kenali potensi mereka &amp; rancang masa depan pendidikan dengan lebih yakin!</p><a class="btn red" href="#tempah">Tempah Slot Sekarang →</a></div></div>
@@ -191,11 +204,13 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 <script>
 // ===== KONFIGURASI =====
 const SHEET_URL='https://script.google.com/macros/s/AKfycbxLRW6lBlLZzDKsvOdFophJull84e-mIwMST_63X-ZwUA2nmVt71QiDVAxUjatXebaJiQ/exec';
-const LOKASI='Booth Testpaper'; // TODO: tukar kepada nama event & lokasi sebenar
-// TODO: tukar tarikh event sebenar (YYYY-MM-DD)
+const LOKASI='Booth Testpaper Lot No 4, Karnival MBTHO Beriadah 4.0, Masjid Bandar Tun Hussein Onn, 43000 Cheras, Selangor';
+const MAPS='https://maps.app.goo.gl/QywW4PZbrnGN1qev7';
+const SLOT_MIN=15, KAPASITI=5; // 5 perunding setiap slot
 const DAYS=['2026-11-28','2026-11-29'];
-const TIMES=['10:00','10:30','11:00','11:30','12:00','14:30','15:00','15:30','16:00','16:30','17:00'];
-const FULL={}; // slot penuh, cth: {'2026-11-28 10:00':1}
+const TIMES=['09:00','09:15','09:30','09:45','10:00','10:15','10:30','10:45','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15'];
+let COUNT={}; // bilangan tempahan setiap slot, dari Apps Script
+const lbl=t=>{const[h,m]=t.split(':').map(Number);return (h>12?h-12:h)+':'+String(m).padStart(2,'0')+(h<12?' am':' pm')};
 
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const utm=new URLSearchParams(location.search);
@@ -207,7 +222,9 @@ $$('.shoplink').forEach(a=>a.href='https://shop.testpaper.com.my/?code='+encodeU
 const fmt=d=>new Date(d+'T00:00:00+08:00').toLocaleDateString('ms-MY',{weekday:'long',day:'numeric',month:'short',timeZone:'Asia/Kuala_Lumpur'});
 const now=Date.now();
 $('#days').innerHTML=DAYS.filter(d=>new Date(d+'T23:59:59+08:00')>now).map(d=>{const[w,...r]=fmt(d).split(' ');return `<label><input type="radio" name="tarikh" value="${d}" required><span>${w.replace(',','')}<small>${r.join(' ')}</small></span></label>`}).join('')||'<p class="note">Tiada tarikh dibuka buat masa ini.</p>';
-$('#days').onchange=()=>{const d=$('[name=tarikh]:checked').value;$('#times').innerHTML=TIMES.map(t=>{const past=new Date(d+'T'+t+':00+08:00')<now,full=FULL[d+' '+t];return `<label><input type="radio" name="masa" value="${t}" required ${past||full?'disabled':''}><span>${t}${full?' (penuh)':''}</span></label>`}).join('')};
+function renderTimes(){const c=$('[name=tarikh]:checked');if(!c)return;const d=c.value,prev=($('[name=masa]:checked')||{}).value;$('#times').innerHTML=TIMES.map(t=>{const past=new Date(d+'T'+t+':00+08:00')<now,n=COUNT[d+' '+t]||0,full=n>=KAPASITI,left=KAPASITI-n;return `${t=='14:30'?'<p class="note" style="width:100%;margin:6px 0 0">🌤️ Sesi petang</p>':t=='09:00'?'<p class="note" style="width:100%;margin:0">☀️ Sesi pagi</p>':''}<label><input type="radio" name="masa" value="${t}" required ${past||full?'disabled':''} ${t==prev&&!full?'checked':''}><span>${lbl(t)}<small style="display:block;font-weight:400;font-size:11px">${full?'Penuh':left<=2?'Tinggal '+left:''}</small></span></label>`}).join('')}
+$('#days').onchange=renderTimes;
+if(SHEET_URL)fetch(SHEET_URL+'?action=slots').then(r=>r.json()).then(j=>{if(j&&j.slots){COUNT=j.slots;renderTimes()}}).catch(()=>{});
 
 // pilih servis dari kad
 $$('[data-s]').forEach(b=>b.addEventListener('click',()=>{$$('[name=servis]')[b.dataset.s-1].checked=true}));
@@ -226,8 +243,8 @@ $('#f').onsubmit=async e=>{e.preventDefault();
  try{if(SHEET_URL)await fetch(SHEET_URL,{method:'POST',body:new URLSearchParams(f),mode:'no-cors'})}catch(_){}
  fbq('track','Schedule',{content_name:f.get('servis')},{eventID:EID});
  const d=f.get('tarikh'),t=f.get('masa'),esc=s=>String(s).replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
- $('#tk').innerHTML=`<p>👤 <b>${esc(f.get('nama'))}</b> &amp; ${esc(f.get('anak'))} (${esc(f.get('tahap'))})</p><p>🎯 ${esc(f.get('servis'))}</p><p>📅 ${fmt(d)} · ⏰ ${t}</p><p>📍 ${esc(LOKASI)}</p>`;
- const st=d.replace(/-/g,'')+'T'+t.replace(':','')+'00',[H,M]=t.split(':').map(Number),en=d.replace(/-/g,'')+'T'+String(H+(M+30>=60?1:0)).padStart(2,'0')+String((M+30)%60).padStart(2,'0')+'00';
+ $('#tk').innerHTML=`<p>👤 <b>${esc(f.get('nama'))}</b> &amp; ${esc(f.get('anak'))} (${esc(f.get('tahap'))})</p><p>🎯 ${esc(f.get('servis'))}</p><p>📅 ${fmt(d)} · ⏰ ${lbl(t)} (15 minit)</p><p>📍 ${esc(LOKASI)} · <a href="${MAPS}" target="_blank">Google Maps</a></p>`;
+ const st=d.replace(/-/g,'')+'T'+t.replace(':','')+'00',[H,M]=t.split(':').map(Number),em=H*60+M+SLOT_MIN,en=d.replace(/-/g,'')+'T'+String(em/60|0).padStart(2,'0')+String(em%60).padStart(2,'0')+'00';
  $('#cal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Temu Janji Testpaper: '+f.get('servis'))+'&dates='+st+'/'+en+'&ctz=Asia/Kuala_Lumpur&location='+encodeURIComponent(LOKASI);
  e.target.classList.add('hide');$('#ok').classList.remove('hide');$('#tempah').scrollIntoView({behavior:'smooth'})};
 </script></body></html>

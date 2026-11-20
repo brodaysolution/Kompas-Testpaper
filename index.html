@@ -92,7 +92,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .gift{background:linear-gradient(180deg,#fff,#fefce8)}
 .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .gc{background:#fff;border-radius:24px;padding:24px;text-align:center;box-shadow:0 12px 30px rgba(220,38,38,.1);border:3px solid #fecaca;position:relative;overflow:hidden}
-.gc .e{font-size:60px}.gc .big{font-size:46px;color:var(--red);font-weight:700;line-height:1}.gc h3{margin:.2em 0;color:var(--g1)}.gc p{margin:0;color:var(--mut);font-size:14px}
+.gc .gp{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;margin-bottom:10px;display:block}.gc .e{font-size:60px}.gc .big{font-size:46px;color:var(--red);font-weight:700;line-height:1}.gc h3{margin:.2em 0;color:var(--g1)}.gc p{margin:0;color:var(--mut);font-size:14px}
 .rib{position:absolute;top:14px;right:-34px;transform:rotate(40deg);background:var(--red);color:#fff;font:700 12px 'Poppins';padding:4px 40px}
 .why{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .why div{background:#fff;border-radius:20px;padding:20px;text-align:center;border:2px solid #dcfce7}.why span{font-size:38px}.why h3{margin:.2em 0;font-size:18px;color:var(--g1)}.why p{margin:0;color:var(--mut);font-size:14px}
@@ -182,9 +182,9 @@ footer{text-align:center;background:var(--g1);color:#bbf7d0;padding:30px 0 90px;
 <section class="gift"><div class="w">
 <h2>🎁 Hadiah Istimewa Untuk <span>Pengunjung!</span></h2><p class="lead">Syaratnya mudah: <b>tempah slot temu janji secara PERCUMA</b> &amp; datang ke booth. Itu sahaja!</p>
 <div class="gg">
- <div class="gc"><div class="rib">PERCUMA</div><div class="e">🍦</div><div class="big">250</div><h3>Aiskrim Malaysia</h3><p>Sejuk-sejuk untuk anak-anak!</p></div>
- <div class="gc"><div class="rib">PERCUMA</div><div class="e">☕</div><div class="big">Hot</div><h3>Caffè Latte</h3><p>Panas-panas untuk Ibu Ayah.</p></div>
- <div class="gc"><div class="rib">EKSKLUSIF</div><div class="e">🥤</div><div class="big">20</div><h3>Tumbler Testpaper</h3><p>Khas untuk 20 pengunjung terawal!</p></div>
+ <div class="gc"><div class="rib">PERCUMA</div><img class="gp" src="img/aiskrim.webp" alt="Aiskrim Malaysia pelbagai perisa" loading="lazy"><div class="big">250</div><h3>Aiskrim Malaysia</h3><p>Sejuk-sejuk untuk anak-anak!</p></div>
+ <div class="gc"><div class="rib">PERCUMA</div><div class="gp e" style="display:grid;place-items:center;font-size:110px;background:radial-gradient(circle,#fef3c7,#fde68a)">☕</div><div class="big">Hot</div><h3>Caffè Latte</h3><p>Panas-panas untuk Ibu Ayah.</p></div>
+ <div class="gc"><div class="rib">EKSKLUSIF</div><img class="gp" src="img/tumbler.webp" alt="Tumbler eksklusif Testpaper" loading="lazy"><div class="big">20</div><h3>Tumbler Testpaper</h3><p>Khas untuk 20 pengunjung terawal!</p></div>
 </div></div></section>
 
 <section style="padding-top:0"><div class="w">

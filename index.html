@@ -88,6 +88,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .days,.times{display:flex;flex-wrap:wrap;gap:8px}
 .days span,.times span{display:block;padding:10px 14px;border:2px solid #bbf7d0;border-radius:14px;background:#f7fef9;font-weight:600;font-size:14px;text-align:center;transition:.15s}
 .days span small{display:block;font-weight:400;color:var(--mut);font-size:12px}
+.times span small{display:block;font-weight:600;font-size:11px;margin-top:2px}.times small.ok{color:var(--g2)}.times small.low{color:var(--red);animation:fade 1s ease-in-out 3}@keyframes fade{50%{opacity:.35}}.times input:checked+span small{color:var(--g1)}
 .times input:disabled+span{opacity:.4;text-decoration:line-through;cursor:not-allowed}
 .note{font-size:13px;color:var(--mut);margin:12px 0}
 .hide{display:none!important}
@@ -239,7 +240,7 @@ $$('.shoplink').forEach(a=>a.href='https://shop.testpaper.com.my/?code='+encodeU
 const fmt=d=>new Date(d+'T00:00:00+08:00').toLocaleDateString('ms-MY',{weekday:'long',day:'numeric',month:'short',timeZone:'Asia/Kuala_Lumpur'});
 const now=Date.now();
 $('#days').innerHTML=DAYS.filter(d=>new Date(d+'T23:59:59+08:00')>now).map(d=>{const[w,...r]=fmt(d).split(' ');return `<label><input type="radio" name="tarikh" value="${d}" required><span>${w.replace(',','')}<small>${r.join(' ')}</small></span></label>`}).join('')||'<p class="note">Tiada tarikh dibuka buat masa ini.</p>';
-function renderTimes(){const c=$('[name=tarikh]:checked');if(!c)return;const d=c.value,prev=($('[name=masa]:checked')||{}).value;$('#times').innerHTML=TIMES.map(t=>{const past=new Date(d+'T'+t+':00+08:00')<now,n=COUNT[d+' '+t]||0,full=n>=KAPASITI,left=KAPASITI-n;return `${t=='14:30'?'<p class="note" style="width:100%;margin:6px 0 0">🌤️ Sesi petang</p>':t=='09:00'?'<p class="note" style="width:100%;margin:0">☀️ Sesi pagi</p>':''}<label><input type="radio" name="masa" value="${t}" required ${past||full?'disabled':''} ${t==prev&&!full?'checked':''}><span>${lbl(t)}<small style="display:block;font-weight:400;font-size:11px">${full?'Penuh':left<=2?'Tinggal '+left:''}</small></span></label>`}).join('')}
+function renderTimes(){const c=$('[name=tarikh]:checked');if(!c)return;const d=c.value,prev=($('[name=masa]:checked')||{}).value;$('#times').innerHTML=TIMES.map(t=>{const past=new Date(d+'T'+t+':00+08:00')<now,n=COUNT[d+' '+t]||0,full=n>=KAPASITI,left=KAPASITI-n;return `${t=='14:30'?'<p class="note" style="width:100%;margin:6px 0 0">🌤️ Sesi petang</p>':t=='09:00'?'<p class="note" style="width:100%;margin:0">☀️ Sesi pagi</p>':''}<label><input type="radio" name="masa" value="${t}" required ${past||full?'disabled':''} ${t==prev&&!full?'checked':''}><span>${lbl(t)}<small class="${full?'':left<=2?'low':'ok'}">${past?'Tamat':full?'Penuh':'Tinggal '+left+' tempat'}</small></span></label>`}).join('')}
 $('#days').onchange=renderTimes;
 if(SHEET_URL)fetch(SHEET_URL+'?action=slots').then(r=>r.json()).then(j=>{if(j&&j.slots){COUNT=j.slots;renderTimes()}}).catch(()=>{});
 

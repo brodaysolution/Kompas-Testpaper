@@ -136,6 +136,10 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
 const SHEET_URL='https://script.google.com/macros/s/AKfycbxLRW6lBlLZzDKsvOdFophJull84e-mIwMST_63X-ZwUA2nmVt71QiDVAxUjatXebaJiQ/exec';
 const WA_PIC='601154026184'; // Cikgu Amirul
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// Jejak imbasan QR: ?src=qr (sekali sahaja setiap peranti)
+const SRC=(new URLSearchParams(location.search).get('src')||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,30);
+if(SRC){let first=true;try{first=!localStorage.getItem('scan_'+SRC);localStorage.setItem('scan_'+SRC,'1')}catch(_){}
+ try{fetch(SHEET_URL,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({jenis:'scan',src:SRC,unik:first?'Ya':'Tidak',ua:navigator.userAgent})})}catch(_){}}
 const pgs=$$('.pg'),bars=$$('.bar i');let cur=0;
 const show=i=>{cur=i;pgs.forEach((p,j)=>p.classList.toggle('hide',i!=j));bars.forEach((b,j)=>b.classList.toggle('on',j<=i));scrollTo({top:0,behavior:'smooth'})};
 const val=n=>($('[name='+n+']:checked')||{}).value||'';
@@ -152,7 +156,7 @@ $$('[data-next]').forEach(b=>b.onclick=()=>{const e=check(cur);if(e)return alert
 $$('[data-back]').forEach(b=>b.onclick=()=>show(cur-1));
 $('#f').onsubmit=e=>{e.preventDefault();const er=check(2);if(er)return alert(er);
  const kod='KMP-'+Math.random().toString(36).slice(2,6).toUpperCase();
- const d={jenis:'survey',kod,kategori:val('kategori'),nama:$('[name=nama]').value.trim(),wa:$('[name=wa]').value.trim(),emel:$('[name=emel]').value.trim(),hadiah:val('hadiah')};
+ const d={jenis:'survey',src:SRC,kod,kategori:val('kategori'),nama:$('[name=nama]').value.trim(),wa:$('[name=wa]').value.trim(),emel:$('[name=emel]').value.trim(),hadiah:val('hadiah')};
  const q=isIbu()?[['Tahap anak',$('[name=ib_tahap]').value],['Cabaran',vals('ib_cabaran')],['Sokongan diperlukan',vals('ib_sokongan')]]:[['Tahap',$('[name=pl_tahap]').value],['Subjek mencabar',vals('pl_subjek')],['Kerjaya impian',val('pl_kerjaya')]];
  d.q1=q[0][1];d.q2=q[1][1];d.q3=q[2][1];
  const msg='Assalamualaikum Cikgu Amirul 👋\nSaya dah lengkapkan survey Testpaper di Karnival MBTHO Beriadah 4.0.\n\n'+

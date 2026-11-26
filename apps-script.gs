@@ -16,6 +16,9 @@ function doPost(e) {
   if (e && e.parameter && e.parameter.jenis === "survey") {
     return handleSurvey(e);
   }
+  if (e && e.parameter && e.parameter.jenis === "scan") {
+    return handleScan(e);
+  }
   try {
     const data = JSON.parse(e.postData.contents || "{}");
     if (data.secret !== WEBHOOK_SECRET) {
@@ -74,10 +77,26 @@ function handleSurvey(e) {
     const sh = ss.getSheetByName("Survey") || ss.insertSheet("Survey");
     if (sh.getLastRow() === 0) {
       sh.appendRow(["Masa", "Kod", "Kategori", "Nama", "No. Telefon", "Emel",
-        "S1 (Tahap)", "S2 (Cabaran / Subjek)", "S3 (Sokongan / Kerjaya)", "Hadiah", "Status Tebus"]);
+        "S1 (Tahap)", "S2 (Cabaran / Subjek)", "S3 (Sokongan / Kerjaya)", "Hadiah", "Status Tebus", "Sumber"]);
     }
     sh.appendRow([new Date(), p.kod || "", p.kategori || "", p.nama || "", "'" + (p.wa || ""), p.emel || "",
-      p.q1 || "", p.q2 || "", p.q3 || "", p.hadiah || "", "Belum tebus"]);
+      p.q1 || "", p.q2 || "", p.q3 || "", p.hadiah || "", "Belum tebus", p.src || "Terus"]);
+    return response({ ok: true });
+  } catch (error) {
+    return response({ ok: false, error: error.message });
+  }
+}
+
+// Imbasan QR -> tab "Scan QR"
+function handleScan(e) {
+  try {
+    const p = e.parameter;
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sh = ss.getSheetByName("Scan QR") || ss.insertSheet("Scan QR");
+    if (sh.getLastRow() === 0) sh.appendRow(["Masa", "Sumber", "Peranti Unik", "Peranti"]);
+    const ua = String(p.ua || "");
+    const dev = /iPhone|iPad/.test(ua) ? "iPhone/iPad" : /Android/.test(ua) ? "Android" : "Lain-lain";
+    sh.appendRow([new Date(), p.src || "", p.unik || "", dev]);
     return response({ ok: true });
   } catch (error) {
     return response({ ok: false, error: error.message });

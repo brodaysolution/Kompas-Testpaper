@@ -35,6 +35,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .btn:disabled{opacity:.6;cursor:wait}
 .row{display:flex;gap:10px}
 .hide{display:none!important}
+.socs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.soc{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--navy);font-size:11px;font-weight:600;padding:10px 2px;border-radius:16px;border:2px solid #dcfce7;background:#f7fef9;transition:.15s}
+.soc i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.18)}.soc svg{width:28px;height:28px}
+.soc em{display:none;position:absolute;top:-8px;right:-6px;width:24px;height:24px;border-radius:50%;background:var(--g2);color:#fff;font:700 14px/24px Poppins;font-style:normal;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.soc.done{border-color:var(--g2);background:#dcfce7}.soc.done em{display:block}
+.soccount{text-align:center;font:700 16px 'Fredoka';color:var(--red);margin:14px 0 0}.soccount.ok{color:var(--g2)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:380px){.soc span{font-size:10px}.soc i{width:40px;height:40px}}
 .lain{margin-top:10px;border-style:dashed}
 .note{font-size:12px;color:var(--mut);text-align:center;margin:12px 0 0}
 .ok{text-align:center}.ok .big{font-size:56px;line-height:1}
@@ -47,16 +55,24 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
  <img class="logo" src="../img/logo-footer.webp" alt="Testpaper.com.my">
  <div><span class="tag">🎪 Karnival MBTHO Beriadah 4.0</span></div>
  <h1>Jawab Survey,<br><span>Tebus Hadiah PERCUMA!</span></h1>
- <p class="sub">Ambil masa 1 minit sahaja. Tunjukkan mesej WhatsApp anda di booth untuk tebus.</p>
+ <p class="sub">Ikuti 3 langkah mudah ini &amp; tebus hadiah anda di booth!</p>
  <div class="gifts"><div>🍦 Aiskrim Malaysia</div><div>☕ Hot Caffè Latte</div></div>
- <div class="steps"><span>1. Isi survey</span><span>2. Hantar WhatsApp</span><span>3. Tebus hadiah</span></div>
+ <div class="steps"><span>1. Follow 2 sosial media</span><span>2. Isi borang</span><span>3. Tebus hadiah</span></div>
 </div>
 
 <div class="card">
 <form id="f" novalidate>
- <div class="bar"><i class="on"></i><i></i><i></i></div>
+ <div class="bar"><i class="on"></i><i></i><i></i><i></i></div>
 
  <div class="pg" data-p="0">
+  <label class="t" style="margin-top:0">Langkah 1: Follow sekurang-kurangnya 2 sosial media Testpaper</label>
+  <p style="margin:0 0 14px;color:var(--mut);font-size:14px">Tekan logo untuk buka &amp; follow <b>@testpaper.academy</b>, kemudian kembali ke page ini.</p>
+  <div class="socs"><a class="soc" href="https://www.instagram.com/testpaper.academy/" target="_blank" rel="noopener" data-s="Instagram" aria-label="Instagram"><i style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#fff" stroke="none"/></svg></i><span>Instagram</span><em>✓</em></a><a class="soc" href="https://www.facebook.com/testpaper.academy" target="_blank" rel="noopener" data-s="Facebook" aria-label="Facebook"><i style="background:#1877F2"><svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z"/></svg></i><span>Facebook</span><em>✓</em></a><a class="soc" href="https://www.tiktok.com/@testpaper.academy" target="_blank" rel="noopener" data-s="TikTok" aria-label="TikTok"><i style="background:#000"><svg viewBox="0 0 24 24"><path fill="#25F4EE" transform="translate(-.8 -.6)" d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/><path fill="#FE2C55" transform="translate(.8 .6)" d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/><path fill="#fff" d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/></svg></i><span>TikTok</span><em>✓</em></a><a class="soc" href="https://www.threads.com/@testpaper.academy" target="_blank" rel="noopener" data-s="Threads" aria-label="Threads"><i style="background:#000"><svg viewBox="0 0 24 24"><text x="12" y="17.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="19" fill="#fff">@</text></svg></i><span>Threads</span><em>✓</em></a><a class="soc" href="https://www.youtube.com/@testpaper.academy" target="_blank" rel="noopener" data-s="YouTube" aria-label="YouTube"><i style="background:#FF0000"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="#fff"/><path d="M10 9v6l5.2-3z" fill="#FF0000"/></svg></i><span>YouTube</span><em>✓</em></a></div>
+  <p class="soccount" id="socCount">0 / 2 diikuti</p>
+  <button type="button" class="btn" data-next id="socNext" disabled>Seterusnya →</button>
+ </div>
+
+ <div class="pg hide" data-p="1">
   <label class="t">Anda adalah…</label>
   <div class="ch big two">
    <label><input type="radio" name="kategori" value="Ibu Bapa" required><span><b>👨‍👩‍👧</b>Ibu Bapa</span></label>
@@ -68,7 +84,7 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
   <button type="button" class="btn" data-next>Seterusnya →</button>
  </div>
 
- <div class="pg hide" data-p="1">
+ <div class="pg hide" data-p="2">
   <div id="qIbu">
    <label class="t">1. Anak anda kini di tahap?</label>
    <select name="ib_tahap"><option value="">Pilih tahap</option><option>Prasekolah</option><option>Tahun 1 - 3</option><option>Tahun 4 - 6</option><option>Tingkatan 1 - 3</option><option>Tingkatan 4 - 5</option><option>Lebih daripada seorang anak (pelbagai tahap)</option></select>
@@ -121,7 +137,7 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
   <div class="row"><button type="button" class="btn gray" data-back>←</button><button type="button" class="btn" data-next>Seterusnya →</button></div>
  </div>
 
- <div class="pg hide" data-p="2">
+ <div class="pg hide" data-p="3">
   <label class="t">Pilih hadiah anda 🎁</label>
   <div class="ch big two">
    <label><input type="radio" name="hadiah" value="Aiskrim Malaysia" required><span><b>🍦</b>Aiskrim Malaysia</span></label>
@@ -149,6 +165,10 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const SRC=(new URLSearchParams(location.search).get('src')||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,30);
 if(SRC){let first=true;try{first=!localStorage.getItem('scan_'+SRC);localStorage.setItem('scan_'+SRC,'1')}catch(_){}
  try{fetch(SHEET_URL,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({jenis:'scan',src:SRC,unik:first?'Ya':'Tidak',ua:navigator.userAgent})})}catch(_){}}
+const SOC=new Set();try{(JSON.parse(localStorage.getItem('soc')||'[]')).forEach(x=>SOC.add(x))}catch(_){}
+function socUI(){$$('.soc').forEach(a=>a.classList.toggle('done',SOC.has(a.dataset.s)));const n=SOC.size;$('#socCount').textContent=n>=2?'✅ '+n+' sosial media diikuti. Terima kasih!':n+' / 2 diikuti';$('#socCount').classList.toggle('ok',n>=2);$('#socNext').disabled=n<2}
+$$('.soc').forEach(a=>a.addEventListener('click',()=>{SOC.add(a.dataset.s);try{localStorage.setItem('soc',JSON.stringify([...SOC]))}catch(_){}setTimeout(socUI,300)}));
+socUI();
 const pgs=$$('.pg'),bars=$$('.bar i');let cur=0;
 const show=i=>{cur=i;pgs.forEach((p,j)=>p.classList.toggle('hide',i!=j));bars.forEach((b,j)=>b.classList.toggle('on',j<=i));scrollTo({top:0,behavior:'smooth'})};
 const lain=(n,v)=>v=='Lain-lain'?'Lain-lain: '+($('[name='+n+'_lain]').value.trim()):v;
@@ -159,21 +179,22 @@ $$('[value="Lain-lain"]').forEach(x=>{const n=x.name,box=$('[name='+n+'_lain]');
 const isIbu=()=>val('kategori')=='Ibu Bapa';
 $$('[name=kategori]').forEach(r=>r.onchange=()=>{$('#qIbu').classList.toggle('hide',!isIbu());$('#qPel').classList.toggle('hide',isIbu())});
 function check(i){
- if(i==0){if(!val('kategori'))return 'Sila pilih Ibu Bapa atau Pelajar';for(const n of['nama','wa','emel']){const el=$('[name='+n+']');if(!el.checkValidity()){el.focus();return {nama:'Sila isi nama',wa:'Sila isi no. telefon yang betul',emel:'Sila isi emel yang betul'}[n]}}}
- if(i==1){if(isIbu()){if(!$('[name=ib_tahap]').value)return 'Sila pilih tahap anak';if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(lainKosong('ib_cabaran'))return 'Sila nyatakan cabaran lain-lain';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan';if(lainKosong('ib_sokongan'))return 'Sila nyatakan sokongan lain-lain'}
+ if(i==0&&SOC.size<2)return 'Sila follow sekurang-kurangnya 2 sosial media dahulu';
+ if(i==1){if(!val('kategori'))return 'Sila pilih Ibu Bapa atau Pelajar';for(const n of['nama','wa','emel']){const el=$('[name='+n+']');if(!el.checkValidity()){el.focus();return {nama:'Sila isi nama',wa:'Sila isi no. telefon yang betul',emel:'Sila isi emel yang betul'}[n]}}}
+ if(i==2){if(isIbu()){if(!$('[name=ib_tahap]').value)return 'Sila pilih tahap anak';if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(lainKosong('ib_cabaran'))return 'Sila nyatakan cabaran lain-lain';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan';if(lainKosong('ib_sokongan'))return 'Sila nyatakan sokongan lain-lain'}
   else{if(!$('[name=pl_tahap]').value)return 'Sila pilih tahap anda';if(!vals('pl_subjek'))return 'Sila pilih sekurang-kurangnya satu subjek';if(lainKosong('pl_subjek'))return 'Sila nyatakan subjek lain-lain';if(!val('pl_kerjaya'))return 'Sila pilih bidang kerjaya';if(lainKosong('pl_kerjaya'))return 'Sila nyatakan bidang kerjaya impian'}}
- if(i==2&&!val('hadiah'))return 'Sila pilih hadiah';
+ if(i==3&&!val('hadiah'))return 'Sila pilih hadiah';
 }
 $$('[data-next]').forEach(b=>b.onclick=()=>{const e=check(cur);if(e)return alert(e);show(cur+1)});
 $$('[data-back]').forEach(b=>b.onclick=()=>show(cur-1));
-$('#f').onsubmit=e=>{e.preventDefault();const er=check(2);if(er)return alert(er);
+$('#f').onsubmit=e=>{e.preventDefault();const er=check(3);if(er)return alert(er);
  const kod='KMP-'+Math.random().toString(36).slice(2,6).toUpperCase();
- const d={jenis:'survey',src:SRC,kod,kategori:val('kategori'),nama:$('[name=nama]').value.trim(),wa:$('[name=wa]').value.trim(),emel:$('[name=emel]').value.trim(),hadiah:val('hadiah')};
+ const d={jenis:'survey',sosial:[...SOC].join(', '),src:SRC,kod,kategori:val('kategori'),nama:$('[name=nama]').value.trim(),wa:$('[name=wa]').value.trim(),emel:$('[name=emel]').value.trim(),hadiah:val('hadiah')};
  const q=isIbu()?[['Tahap anak',$('[name=ib_tahap]').value],['Cabaran',vals('ib_cabaran')],['Sokongan diperlukan',vals('ib_sokongan')]]:[['Tahap',$('[name=pl_tahap]').value],['Subjek mencabar',vals('pl_subjek')],['Kerjaya impian',val('pl_kerjaya')]];
  d.q1=q[0][1];d.q2=q[1][1];d.q3=q[2][1];
  const msg='Assalamualaikum Cikgu Amirul 👋\nSaya dah lengkapkan survey Testpaper di Karnival MBTHO Beriadah 4.0.\n\n'+
   '🎟️ Kod: '+kod+'\n👤 Nama: '+d.nama+' ('+d.kategori+')\n📱 Tel: '+d.wa+'\n✉️ Emel: '+d.emel+'\n\n'+
-  q.map(([k,v])=>'• '+k+': '+v).join('\n')+'\n\n🎁 Saya nak tebus: '+d.hadiah+'\n\nTerima kasih!';
+  q.map(([k,v])=>'• '+k+': '+v).join('\n')+'\n\n📲 Follow: '+d.sosial+'\n🎁 Saya nak tebus: '+d.hadiah+'\n\nTerima kasih!';
  const url='https://wa.me/'+WA_PIC+'?text='+encodeURIComponent(msg);
  $('#go').disabled=true;$('#go').textContent='Menghantar...';
  try{fetch(SHEET_URL,{method:'POST',body:new URLSearchParams(d),mode:'no-cors',keepalive:true})}catch(_){}

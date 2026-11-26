@@ -77,10 +77,10 @@ function handleSurvey(e) {
     const sh = ss.getSheetByName("Survey") || ss.insertSheet("Survey");
     if (sh.getLastRow() === 0) {
       sh.appendRow(["Masa", "Kod", "Kategori", "Nama", "No. Telefon", "Emel",
-        "S1 (Tahap)", "S2 (Cabaran / Subjek)", "S3 (Sokongan / Kerjaya)", "Hadiah", "Status Tebus", "Sumber"]);
+        "S1 (Tahap)", "S2 (Cabaran / Subjek)", "S3 (Sokongan / Kerjaya)", "Hadiah", "Status Tebus", "Sumber", "Sosial Media"]);
     }
     sh.appendRow([new Date(), p.kod || "", p.kategori || "", p.nama || "", "'" + (p.wa || ""), p.emel || "",
-      p.q1 || "", p.q2 || "", p.q3 || "", p.hadiah || "", "Belum tebus", p.src || "Terus"]);
+      p.q1 || "", p.q2 || "", p.q3 || "", p.hadiah || "", "Belum tebus", p.src || "Terus", p.sosial || ""]);
     return response({ ok: true });
   } catch (error) {
     return response({ ok: false, error: error.message });

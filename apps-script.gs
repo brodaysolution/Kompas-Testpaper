@@ -13,6 +13,9 @@ function doPost(e) {
   if (e && e.parameter && e.parameter.jenis === "temujanji") {
     return handleTemuJanji(e);
   }
+  if (e && e.parameter && e.parameter.jenis === "survey") {
+    return handleSurvey(e);
+  }
   try {
     const data = JSON.parse(e.postData.contents || "{}");
     if (data.secret !== WEBHOOK_SECRET) {
@@ -60,6 +63,24 @@ function handleTemuJanji(e) {
     return response({ ok: false, error: error.message });
   } finally {
     lock.releaseLock();
+  }
+}
+
+// Survey di kompas.testpaper.com.my/survey -> tab "Survey"
+function handleSurvey(e) {
+  try {
+    const p = e.parameter;
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sh = ss.getSheetByName("Survey") || ss.insertSheet("Survey");
+    if (sh.getLastRow() === 0) {
+      sh.appendRow(["Masa", "Kod", "Kategori", "Nama", "No. Telefon", "Emel",
+        "S1 (Tahap)", "S2 (Cabaran / Subjek)", "S3 (Sokongan / Kerjaya)", "Hadiah", "Status Tebus"]);
+    }
+    sh.appendRow([new Date(), p.kod || "", p.kategori || "", p.nama || "", "'" + (p.wa || ""), p.emel || "",
+      p.q1 || "", p.q2 || "", p.q3 || "", p.hadiah || "", "Belum tebus"]);
+    return response({ ok: true });
+  } catch (error) {
+    return response({ ok: false, error: error.message });
   }
 }
 

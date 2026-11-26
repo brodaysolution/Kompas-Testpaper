@@ -35,6 +35,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .btn:disabled{opacity:.6;cursor:wait}
 .row{display:flex;gap:10px}
 .hide{display:none!important}
+.lain{margin-top:10px;border-style:dashed}
 .note{font-size:12px;color:var(--mut);text-align:center;margin:12px 0 0}
 .ok{text-align:center}.ok .big{font-size:56px;line-height:1}
 .steps{display:flex;gap:8px;justify-content:center;color:#fff;font-size:13px;font-weight:600;margin:0 0 16px;flex-wrap:wrap}.steps span{background:rgba(0,0,0,.18);padding:5px 10px;border-radius:99px}
@@ -78,18 +79,22 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
     <label><input type="checkbox" name="ib_cabaran" value="Kurang bahan latihan sesuai"><span><b>📚</b>Kurang bahan latihan yang sesuai</span></label>
     <label><input type="checkbox" name="ib_cabaran" value="Tak pasti pilihan sekolah / hala tuju"><span><b>🧭</b>Tak pasti pilihan sekolah / hala tuju</span></label>
     <label><input type="checkbox" name="ib_cabaran" value="Masa terhad untuk pantau anak"><span><b>⏰</b>Masa terhad untuk pantau anak</span></label>
+    <label><input type="checkbox" name="ib_cabaran" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
+   <input class="lain hide" name="ib_cabaran_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
    <label class="t">3. Sokongan pendidikan yang anda paling perlukan? <small>(boleh pilih lebih dari satu)</small></label>
    <div class="ch one">
     <label><input type="checkbox" name="ib_sokongan" value="Bahan latihan & kertas soalan"><span><b>📝</b>Bahan latihan &amp; kertas soalan</span></label>
     <label><input type="checkbox" name="ib_sokongan" value="Kelas / tuisyen online"><span><b>💻</b>Kelas / tuisyen online</span></label>
     <label><input type="checkbox" name="ib_sokongan" value="Persediaan UKKM / sekolah khusus"><span><b>🏫</b>Persediaan UKKM / sekolah khusus</span></label>
     <label><input type="checkbox" name="ib_sokongan" value="Saringan minat & kerjaya (RIASEC)"><span><b>🎯</b>Saringan minat &amp; kerjaya (RIASEC)</span></label>
+    <label><input type="checkbox" name="ib_sokongan" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
+   <input class="lain hide" name="ib_sokongan_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
   </div>
   <div id="qPel" class="hide">
    <label class="t">1. Anda kini di tahap?</label>
-   <select name="pl_tahap"><option value="">Pilih tahap</option><option>Tahun 4</option><option>Tahun 5</option><option>Tahun 6</option><option>Tingkatan 1</option><option>Tingkatan 2</option><option>Tingkatan 3</option><option>Tingkatan 4</option><option>Tingkatan 5</option></select>
+   <select name="pl_tahap"><option value="">Pilih tahap</option><option>Prasekolah</option><option>Tahun 1</option><option>Tahun 2</option><option>Tahun 3</option><option>Tahun 4</option><option>Tahun 5</option><option>Tahun 6</option><option>Tingkatan 1</option><option>Tingkatan 2</option><option>Tingkatan 3</option><option>Tingkatan 4</option><option>Tingkatan 5</option></select>
    <label class="t">2. Subjek mana paling mencabar untuk anda? <small>(boleh pilih lebih dari satu)</small></label>
    <div class="ch">
     <label><input type="checkbox" name="pl_subjek" value="Matematik"><span><b>➗</b>Matematik</span></label>
@@ -98,7 +103,9 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
     <label><input type="checkbox" name="pl_subjek" value="Bahasa Melayu"><span><b>📖</b>Bahasa Melayu</span></label>
     <label><input type="checkbox" name="pl_subjek" value="Sejarah"><span><b>🏛️</b>Sejarah</span></label>
     <label><input type="checkbox" name="pl_subjek" value="Bahasa Arab / Agama"><span><b>🕌</b>Bahasa Arab / Agama</span></label>
+    <label><input type="checkbox" name="pl_subjek" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
+   <input class="lain hide" name="pl_subjek_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
    <label class="t">3. Bidang kerjaya impian anda?</label>
    <div class="ch">
     <label><input type="radio" name="pl_kerjaya" value="Perubatan & Kesihatan"><span><b>🩺</b>Perubatan &amp; Kesihatan</span></label>
@@ -107,7 +114,9 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
     <label><input type="radio" name="pl_kerjaya" value="Pendidikan"><span><b>👩‍🏫</b>Pendidikan</span></label>
     <label><input type="radio" name="pl_kerjaya" value="Seni & Kreatif"><span><b>🎨</b>Seni &amp; Kreatif</span></label>
     <label><input type="radio" name="pl_kerjaya" value="Belum pasti"><span><b>🤔</b>Belum pasti</span></label>
+    <label><input type="radio" name="pl_kerjaya" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
+   <input class="lain hide" name="pl_kerjaya_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
   </div>
   <div class="row"><button type="button" class="btn gray" data-back>←</button><button type="button" class="btn" data-next>Seterusnya →</button></div>
  </div>
@@ -142,14 +151,17 @@ if(SRC){let first=true;try{first=!localStorage.getItem('scan_'+SRC);localStorage
  try{fetch(SHEET_URL,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({jenis:'scan',src:SRC,unik:first?'Ya':'Tidak',ua:navigator.userAgent})})}catch(_){}}
 const pgs=$$('.pg'),bars=$$('.bar i');let cur=0;
 const show=i=>{cur=i;pgs.forEach((p,j)=>p.classList.toggle('hide',i!=j));bars.forEach((b,j)=>b.classList.toggle('on',j<=i));scrollTo({top:0,behavior:'smooth'})};
-const val=n=>($('[name='+n+']:checked')||{}).value||'';
-const vals=n=>$$('[name='+n+']:checked').map(x=>x.value).join(', ');
+const lain=(n,v)=>v=='Lain-lain'?'Lain-lain: '+($('[name='+n+'_lain]').value.trim()):v;
+const val=n=>lain(n,($('[name='+n+']:checked')||{}).value||'');
+const vals=n=>$$('[name='+n+']:checked').map(x=>lain(n,x.value)).join(', ');
+const lainKosong=n=>$$('[name='+n+']:checked').some(x=>x.value=='Lain-lain')&&!$('[name='+n+'_lain]').value.trim();
+$$('[value="Lain-lain"]').forEach(x=>{const n=x.name,box=$('[name='+n+'_lain]');$$('[name='+n+']').forEach(y=>y.addEventListener('change',()=>{const on=!!$('[name='+n+'][value="Lain-lain"]:checked');box.classList.toggle('hide',!on);if(on&&y.value=='Lain-lain')box.focus()}))});
 const isIbu=()=>val('kategori')=='Ibu Bapa';
 $$('[name=kategori]').forEach(r=>r.onchange=()=>{$('#qIbu').classList.toggle('hide',!isIbu());$('#qPel').classList.toggle('hide',isIbu())});
 function check(i){
  if(i==0){if(!val('kategori'))return 'Sila pilih Ibu Bapa atau Pelajar';for(const n of['nama','wa','emel']){const el=$('[name='+n+']');if(!el.checkValidity()){el.focus();return {nama:'Sila isi nama',wa:'Sila isi no. telefon yang betul',emel:'Sila isi emel yang betul'}[n]}}}
- if(i==1){if(isIbu()){if(!$('[name=ib_tahap]').value)return 'Sila pilih tahap anak';if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan'}
-  else{if(!$('[name=pl_tahap]').value)return 'Sila pilih tahap anda';if(!vals('pl_subjek'))return 'Sila pilih sekurang-kurangnya satu subjek';if(!val('pl_kerjaya'))return 'Sila pilih bidang kerjaya'}}
+ if(i==1){if(isIbu()){if(!$('[name=ib_tahap]').value)return 'Sila pilih tahap anak';if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(lainKosong('ib_cabaran'))return 'Sila nyatakan cabaran lain-lain';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan';if(lainKosong('ib_sokongan'))return 'Sila nyatakan sokongan lain-lain'}
+  else{if(!$('[name=pl_tahap]').value)return 'Sila pilih tahap anda';if(!vals('pl_subjek'))return 'Sila pilih sekurang-kurangnya satu subjek';if(lainKosong('pl_subjek'))return 'Sila nyatakan subjek lain-lain';if(!val('pl_kerjaya'))return 'Sila pilih bidang kerjaya';if(lainKosong('pl_kerjaya'))return 'Sila nyatakan bidang kerjaya impian'}}
  if(i==2&&!val('hadiah'))return 'Sila pilih hadiah';
 }
 $$('[data-next]').forEach(b=>b.onclick=()=>{const e=check(cur);if(e)return alert(e);show(cur+1)});

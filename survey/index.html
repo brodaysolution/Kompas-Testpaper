@@ -43,6 +43,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .btn:disabled{opacity:.6;cursor:wait}
 .row{display:flex;gap:10px}
 .hide{display:none!important}
+.akr{display:flex;gap:8px;align-items:center}.akr select{flex:1}.akr button{flex:none;width:46px;height:50px;margin-bottom:10px;border:2px solid #fecaca;border-radius:12px;background:#fff;color:var(--red);font:700 18px Poppins;cursor:pointer}
 .ak{background:#f7fef9;border:2px solid #dcfce7;border-radius:16px;padding:10px 12px 12px;margin-bottom:10px}
 .ak .hd{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;margin-bottom:8px;color:var(--g1)}
 .ak .hd button{border:0;background:none;color:var(--red);font:600 13px Poppins;cursor:pointer}
@@ -200,22 +201,20 @@ $$('[value="Lain-lain"]').forEach(x=>{const n=x.name,box=$('[name='+n+'_lain]');
 const isIbu=()=>val('kategori')=='Ibu Bapa';
 // Tahun lahir: tahap sekolah 2026 (umur = 2026 - tahun)
 const SESI=2026;
-function tahap(y){const u=SESI-y;if(u<=6)return 'Prasekolah';if(u<=12)return 'Tahun '+(u-6);if(u<=17)return 'Ting. '+(u-12);return 'Lepasan';}
-const YRS=[];for(let y=2022;y>=2008;y--)YRS.push(y);
+const YRS=[];for(let y=2024;y>=1990;y--)YRS.push(y);
 let ANAK=[null];
 function renderAnak(){const ibu=val('kategori')=='Ibu Bapa';
  $('#thnLbl').textContent=ibu?'Tahun lahir anak':'Tahun lahir anda';
  if(!ibu)ANAK=ANAK.slice(0,1);
- $('#anakList').innerHTML=ANAK.map((v,i)=>`<div class="ak">${ibu?`<div class="hd"><span>Anak ${i+1}</span>${ANAK.length>1?`<button type="button" data-rm="${i}">✕ Buang</button>`:''}</div>`:''}<div class="yrs">${YRS.map(y=>`<button type="button" data-i="${i}" data-y="${y}" class="${v==y?'on':''}">${y}<small>${tahap(y)}</small></button>`).join('')}</div></div>`).join('');
+ $('#anakList').innerHTML=ANAK.map((v,i)=>`<div class="akr"><select data-i="${i}"><option value="">${ibu?'Anak '+(i+1)+': pilih tahun lahir':'Pilih tahun lahir'}</option>${YRS.map(y=>`<option ${v==y?'selected':''}>${y}</option>`).join('')}</select>${ibu&&ANAK.length>1?`<button type="button" data-rm="${i}" aria-label="Buang">✕</button>`:''}</div>`).join('');
  $('#addAnak').classList.toggle('hide',!ibu||ANAK.length>=6);
- $$('#anakList [data-y]').forEach(b=>b.onclick=()=>{ANAK[b.dataset.i]=+b.dataset.y;renderAnak()});
- $$('#anakList [data-rm]').forEach(b=>b.onclick=()=>{ANAK.splice(+b.dataset.rm,1);renderAnak()});
- $$('#anakList .yrs').forEach((el,i)=>{const on=el.querySelector('.on');if(on)el.scrollLeft=on.offsetLeft-el.offsetWidth/2+38});
+ $$('#anakList select').forEach(x=>x.onchange=()=>{ANAK[x.dataset.i]=+x.value||null});
+ $$('#anakList [data-rm]').forEach(x=>x.onclick=()=>{ANAK.splice(+x.dataset.rm,1);renderAnak()});
 }
 $('#addAnak').onclick=()=>{ANAK.push(null);renderAnak()};
 $$('[name=kategori]').forEach(r=>r.addEventListener('change',renderAnak));
 renderAnak();
-const tahunTeks=()=>ANAK.filter(Boolean).map(y=>y+' ('+tahap(y)+')').join(', ');
+const tahunTeks=()=>ANAK.filter(Boolean).join(', ');
 $$('[name=kategori]').forEach(r=>r.onchange=()=>{$('#qIbu').classList.toggle('hide',!isIbu());$('#qPel').classList.toggle('hide',isIbu())});
 function check(i){
  if(i==0&&SOC.size<2)return 'Sila follow sekurang-kurangnya 2 sosial media dahulu';

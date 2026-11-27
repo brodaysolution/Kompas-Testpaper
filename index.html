@@ -256,7 +256,7 @@ $('#f').onsubmit=async e=>{e.preventDefault();
  const f=new FormData(e.target);f.append('jenis','temujanji');f.append('agent',AGENT);f.append('lokasi',LOKASI);
  const EID='book_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);const ck=n=>(document.cookie.match('(^|; )'+n+'=([^;]*)')||[])[2]||'';
  f.append('event_id',EID);f.append('fbp',ck('_fbp'));f.append('fbc',ck('_fbc')||(utm.get('fbclid')?'fb.1.'+Date.now()+'.'+utm.get('fbclid'):''));f.append('ua',navigator.userAgent);f.append('url',location.href);f.append('pakej','Temu Janji: '+f.get('servis'));f.append('value',0);
- ['utm_source','utm_medium','utm_campaign','fbclid'].forEach(k=>f.append(k,utm.get(k)||''));
+ ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid'].forEach(k=>f.append(k,utm.get(k)||''));
  const btn=e.target.querySelector('.red');btn.disabled=true;btn.textContent='Menghantar...';
  try{if(SHEET_URL)await fetch(SHEET_URL,{method:'POST',body:new URLSearchParams(f),mode:'no-cors'})}catch(_){}
  fbq('track','Schedule',{content_name:f.get('servis')},{eventID:EID});

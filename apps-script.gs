@@ -51,7 +51,7 @@ function handleTemuJanji(e) {
     if (sh.getLastRow() === 0) {
       sh.appendRow(["Masa", "Nama Ibu/Bapa", "WhatsApp", "Emel", "Nama Anak", "Tahap",
         "Bil. Anak", "Sekolah Sasaran", "Khidmat", "Tarikh", "Slot Masa", "Catatan",
-        "Lokasi", "utm_source", "utm_medium", "utm_campaign", "fbclid", "Kod Agent", "Status"]);
+        "Lokasi", "utm_source", "utm_medium", "utm_campaign", "fbclid", "Kod Agent", "Status", "utm_term (Ad Set)", "utm_content (Iklan)"]);
     }
     const full = (slotCounts()[(p.tarikh || "") + " " + (p.masa || "")] || 0) >= KAPASITI;
     sh.appendRow([
@@ -59,6 +59,7 @@ function handleTemuJanji(e) {
       "'" + (p.pax || ""), p.sasaran || "", p.servis || "", "'" + (p.tarikh || ""), "'" + (p.masa || ""),
       p.catatan || "", p.lokasi || "", p.utm_source || "", p.utm_medium || "", p.utm_campaign || "",
       p.fbclid || "", p.agent || "", full ? "SLOT PENUH - hubungi" : "Belum disahkan",
+      p.utm_term || "", p.utm_content || "",
     ]);
     try { notifyTelegram(p, full); } catch (err) { console.error("Telegram gagal: " + err); }
     return response({ ok: true, full: full });

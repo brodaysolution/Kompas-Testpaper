@@ -43,6 +43,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--g2)}
 .btn:disabled{opacity:.6;cursor:wait}
 .row{display:flex;gap:10px}
 .hide{display:none!important}
+.ak{background:#f7fef9;border:2px solid #dcfce7;border-radius:16px;padding:10px 12px 12px;margin-bottom:10px}
+.ak .hd{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;margin-bottom:8px;color:var(--g1)}
+.ak .hd button{border:0;background:none;color:var(--red);font:600 13px Poppins;cursor:pointer}
+.yrs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.yrs button{flex:none;scroll-snap-align:start;width:76px;padding:8px 4px;border:2px solid #bbf7d0;border-radius:14px;background:#fff;font:700 18px Fredoka;color:var(--navy);cursor:pointer;line-height:1.1}
+.yrs button small{display:block;font:500 10px Poppins;color:var(--mut);margin-top:2px}
+.yrs button.on{background:var(--y2);border-color:var(--g2);box-shadow:0 3px 0 var(--g2)}
+.addk{width:100%;padding:11px;border:2px dashed var(--g3);border-radius:14px;background:#fff;color:var(--g2);font:700 15px Poppins;cursor:pointer}
 .socs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .soc{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--navy);font-size:11px;font-weight:600;padding:10px 2px;border-radius:16px;border:2px solid #dcfce7;background:#f7fef9;transition:.15s}
 .soc i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.18)}.soc svg{width:28px;height:28px}
@@ -93,14 +101,17 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
   <label class="t">Nama</label><input name="nama" required autocomplete="name" placeholder="Nama penuh">
   <label class="t">No. Telefon (WhatsApp)</label><input name="wa" type="tel" required pattern="[0-9+\- ]{9,15}" autocomplete="tel" placeholder="cth 0123456789">
   <label class="t">Emel</label><input name="emel" type="email" required autocomplete="email" placeholder="nama@email.com">
+  <div id="thn">
+   <label class="t" id="thnLbl">Tahun lahir anak</label>
+   <div id="anakList"></div>
+   <button type="button" class="addk" id="addAnak">+ Tambah anak</button>
+  </div>
   <button type="button" class="btn" data-next>Seterusnya →</button>
  </div>
 
  <div class="pg hide" data-p="2">
   <div id="qIbu">
-   <label class="t">1. Anak anda kini di tahap?</label>
-   <select name="ib_tahap"><option value="">Pilih tahap</option><option>Prasekolah</option><option>Tahun 1 - 3</option><option>Tahun 4 - 6</option><option>Tingkatan 1 - 3</option><option>Tingkatan 4 - 5</option><option>Lebih daripada seorang anak (pelbagai tahap)</option></select>
-   <label class="t">2. Apakah cabaran terbesar dalam pembelajaran anak? <small>(boleh pilih lebih dari satu)</small></label>
+   <label class="t">1. Apakah cabaran terbesar dalam pembelajaran anak? <small>(boleh pilih lebih dari satu)</small></label>
    <div class="ch one">
     <label><input type="checkbox" name="ib_cabaran" value="Kurang fokus / motivasi"><span><b>😴</b>Kurang fokus / motivasi</span></label>
     <label><input type="checkbox" name="ib_cabaran" value="Lemah subjek tertentu"><span><b>📉</b>Lemah dalam subjek tertentu</span></label>
@@ -110,7 +121,7 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
     <label><input type="checkbox" name="ib_cabaran" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
    <input class="lain hide" name="ib_cabaran_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
-   <label class="t">3. Sokongan pendidikan yang anda paling perlukan? <small>(boleh pilih lebih dari satu)</small></label>
+   <label class="t">2. Sokongan pendidikan yang anda paling perlukan? <small>(boleh pilih lebih dari satu)</small></label>
    <div class="ch one">
     <label><input type="checkbox" name="ib_sokongan" value="Bahan latihan & kertas soalan"><span><b>📝</b>Bahan latihan &amp; kertas soalan</span></label>
     <label><input type="checkbox" name="ib_sokongan" value="Kelas / tuisyen online"><span><b>💻</b>Kelas / tuisyen online</span></label>
@@ -121,9 +132,7 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
    <input class="lain hide" name="ib_sokongan_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
   </div>
   <div id="qPel" class="hide">
-   <label class="t">1. Anda kini di tahap?</label>
-   <select name="pl_tahap"><option value="">Pilih tahap</option><option>Prasekolah</option><option>Tahun 1</option><option>Tahun 2</option><option>Tahun 3</option><option>Tahun 4</option><option>Tahun 5</option><option>Tahun 6</option><option>Tingkatan 1</option><option>Tingkatan 2</option><option>Tingkatan 3</option><option>Tingkatan 4</option><option>Tingkatan 5</option></select>
-   <label class="t">2. Subjek mana paling mencabar untuk anda? <small>(boleh pilih lebih dari satu)</small></label>
+   <label class="t">1. Subjek mana paling mencabar untuk anda? <small>(boleh pilih lebih dari satu)</small></label>
    <div class="ch">
     <label><input type="checkbox" name="pl_subjek" value="Matematik"><span><b>➗</b>Matematik</span></label>
     <label><input type="checkbox" name="pl_subjek" value="Sains"><span><b>🔬</b>Sains</span></label>
@@ -134,7 +143,7 @@ footer{text-align:center;color:#bbf7d0;font-size:12px;padding:0 0 30px}
     <label><input type="checkbox" name="pl_subjek" value="Lain-lain"><span><b>✏️</b>Lain-lain</span></label>
    </div>
    <input class="lain hide" name="pl_subjek_lain" placeholder="Nyatakan jawapan anda…" maxlength="120">
-   <label class="t">3. Bidang kerjaya impian anda?</label>
+   <label class="t">2. Bidang kerjaya impian anda?</label>
    <div class="ch">
     <label><input type="radio" name="pl_kerjaya" value="Perubatan & Kesihatan"><span><b>🩺</b>Perubatan &amp; Kesihatan</span></label>
     <label><input type="radio" name="pl_kerjaya" value="Kejuruteraan & Teknologi"><span><b>⚙️</b>Kejuruteraan &amp; Teknologi</span></label>
@@ -189,12 +198,30 @@ const vals=n=>$$('[name='+n+']:checked').map(x=>lain(n,x.value)).join(', ');
 const lainKosong=n=>$$('[name='+n+']:checked').some(x=>x.value=='Lain-lain')&&!$('[name='+n+'_lain]').value.trim();
 $$('[value="Lain-lain"]').forEach(x=>{const n=x.name,box=$('[name='+n+'_lain]');$$('[name='+n+']').forEach(y=>y.addEventListener('change',()=>{const on=!!$('[name='+n+'][value="Lain-lain"]:checked');box.classList.toggle('hide',!on);if(on&&y.value=='Lain-lain')box.focus()}))});
 const isIbu=()=>val('kategori')=='Ibu Bapa';
+// Tahun lahir: tahap sekolah 2026 (umur = 2026 - tahun)
+const SESI=2026;
+function tahap(y){const u=SESI-y;if(u<=6)return 'Prasekolah';if(u<=12)return 'Tahun '+(u-6);if(u<=17)return 'Ting. '+(u-12);return 'Lepasan';}
+const YRS=[];for(let y=2022;y>=2008;y--)YRS.push(y);
+let ANAK=[null];
+function renderAnak(){const ibu=val('kategori')=='Ibu Bapa';
+ $('#thnLbl').textContent=ibu?'Tahun lahir anak':'Tahun lahir anda';
+ if(!ibu)ANAK=ANAK.slice(0,1);
+ $('#anakList').innerHTML=ANAK.map((v,i)=>`<div class="ak">${ibu?`<div class="hd"><span>Anak ${i+1}</span>${ANAK.length>1?`<button type="button" data-rm="${i}">✕ Buang</button>`:''}</div>`:''}<div class="yrs">${YRS.map(y=>`<button type="button" data-i="${i}" data-y="${y}" class="${v==y?'on':''}">${y}<small>${tahap(y)}</small></button>`).join('')}</div></div>`).join('');
+ $('#addAnak').classList.toggle('hide',!ibu||ANAK.length>=6);
+ $$('#anakList [data-y]').forEach(b=>b.onclick=()=>{ANAK[b.dataset.i]=+b.dataset.y;renderAnak()});
+ $$('#anakList [data-rm]').forEach(b=>b.onclick=()=>{ANAK.splice(+b.dataset.rm,1);renderAnak()});
+ $$('#anakList .yrs').forEach((el,i)=>{const on=el.querySelector('.on');if(on)el.scrollLeft=on.offsetLeft-el.offsetWidth/2+38});
+}
+$('#addAnak').onclick=()=>{ANAK.push(null);renderAnak()};
+$$('[name=kategori]').forEach(r=>r.addEventListener('change',renderAnak));
+renderAnak();
+const tahunTeks=()=>ANAK.filter(Boolean).map(y=>y+' ('+tahap(y)+')').join(', ');
 $$('[name=kategori]').forEach(r=>r.onchange=()=>{$('#qIbu').classList.toggle('hide',!isIbu());$('#qPel').classList.toggle('hide',isIbu())});
 function check(i){
  if(i==0&&SOC.size<2)return 'Sila follow sekurang-kurangnya 2 sosial media dahulu';
- if(i==1){if(!val('kategori'))return 'Sila pilih Ibu Bapa atau Pelajar';for(const n of['nama','wa','emel']){const el=$('[name='+n+']');if(!el.checkValidity()){el.focus();return {nama:'Sila isi nama',wa:'Sila isi no. telefon yang betul',emel:'Sila isi emel yang betul'}[n]}}}
- if(i==2){if(isIbu()){if(!$('[name=ib_tahap]').value)return 'Sila pilih tahap anak';if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(lainKosong('ib_cabaran'))return 'Sila nyatakan cabaran lain-lain';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan';if(lainKosong('ib_sokongan'))return 'Sila nyatakan sokongan lain-lain'}
-  else{if(!$('[name=pl_tahap]').value)return 'Sila pilih tahap anda';if(!vals('pl_subjek'))return 'Sila pilih sekurang-kurangnya satu subjek';if(lainKosong('pl_subjek'))return 'Sila nyatakan subjek lain-lain';if(!val('pl_kerjaya'))return 'Sila pilih bidang kerjaya';if(lainKosong('pl_kerjaya'))return 'Sila nyatakan bidang kerjaya impian'}}
+ if(i==1){if(!val('kategori'))return 'Sila pilih Ibu Bapa atau Pelajar';if(ANAK.some(x=>!x))return isIbu()?'Sila pilih tahun lahir setiap anak':'Sila pilih tahun lahir anda';for(const n of['nama','wa','emel']){const el=$('[name='+n+']');if(!el.checkValidity()){el.focus();return {nama:'Sila isi nama',wa:'Sila isi no. telefon yang betul',emel:'Sila isi emel yang betul'}[n]}}}
+ if(i==2){if(isIbu()){if(!vals('ib_cabaran'))return 'Sila pilih sekurang-kurangnya satu cabaran';if(lainKosong('ib_cabaran'))return 'Sila nyatakan cabaran lain-lain';if(!vals('ib_sokongan'))return 'Sila pilih sokongan yang diperlukan';if(lainKosong('ib_sokongan'))return 'Sila nyatakan sokongan lain-lain'}
+  else{if(!vals('pl_subjek'))return 'Sila pilih sekurang-kurangnya satu subjek';if(lainKosong('pl_subjek'))return 'Sila nyatakan subjek lain-lain';if(!val('pl_kerjaya'))return 'Sila pilih bidang kerjaya';if(lainKosong('pl_kerjaya'))return 'Sila nyatakan bidang kerjaya impian'}}
  if(i==3&&!val('hadiah'))return 'Sila pilih hadiah';
 }
 $$('[data-next]').forEach(b=>b.onclick=()=>{const e=check(cur);if(e)return alert(e);show(cur+1)});
@@ -202,7 +229,7 @@ $$('[data-back]').forEach(b=>b.onclick=()=>show(cur-1));
 $('#f').onsubmit=e=>{e.preventDefault();const er=check(3);if(er)return alert(er);
  const kod='KMP-'+Math.random().toString(36).slice(2,6).toUpperCase();
  const d={jenis:'survey',sosial:[...SOC].join(', '),src:SRC,kod,kategori:val('kategori'),nama:$('[name=nama]').value.trim(),wa:$('[name=wa]').value.trim(),emel:$('[name=emel]').value.trim(),hadiah:val('hadiah')};
- const q=isIbu()?[['Tahap anak',$('[name=ib_tahap]').value],['Cabaran',vals('ib_cabaran')],['Sokongan diperlukan',vals('ib_sokongan')]]:[['Tahap',$('[name=pl_tahap]').value],['Subjek mencabar',vals('pl_subjek')],['Kerjaya impian',val('pl_kerjaya')]];
+ const q=isIbu()?[['Tahun lahir anak',tahunTeks()],['Cabaran',vals('ib_cabaran')],['Sokongan diperlukan',vals('ib_sokongan')]]:[['Tahun lahir',tahunTeks()],['Subjek mencabar',vals('pl_subjek')],['Kerjaya impian',val('pl_kerjaya')]];
  d.q1=q[0][1];d.q2=q[1][1];d.q3=q[2][1];
  const msg='Assalamualaikum Cikgu Amirul 👋\nSaya dah lengkapkan survey Testpaper di Karnival MBTHO Beriadah 4.0.\n\n'+
   '🎟️ Kod: '+kod+'\n👤 Nama: '+d.nama+' ('+d.kategori+')\n📱 Tel: '+d.wa+'\n✉️ Emel: '+d.emel+'\n\n'+

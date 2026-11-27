@@ -201,7 +201,7 @@ $$('[value="Lain-lain"]').forEach(x=>{const n=x.name,box=$('[name='+n+'_lain]');
 const isIbu=()=>val('kategori')=='Ibu Bapa';
 // Tahun lahir: tahap sekolah 2026 (umur = 2026 - tahun)
 const SESI=2026;
-const YRS=[];for(let y=2024;y>=1990;y--)YRS.push(y);
+const YRS=[];for(let y=2024;y>=2005;y--)YRS.push(y);
 let ANAK=[null];
 function renderAnak(){const ibu=val('kategori')=='Ibu Bapa';
  $('#thnLbl').textContent=ibu?'Tahun lahir anak':'Tahun lahir anda';
